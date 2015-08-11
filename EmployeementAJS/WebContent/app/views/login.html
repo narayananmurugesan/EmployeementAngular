@@ -1,0 +1,55 @@
+<div class="container" data-ng-controller="LoginController as login">
+	<h1>User Login</h1>
+
+	<div data-ng-controller="MessageController as messageCtrl" data-ng-show="isMessage">		
+		<div class="alert alert-warning"
+			data-ng-show="messageSeverityWarn">{{messageContent}}</div>
+		<div class="alert alert-info"
+			data-ng-show="messageSeverityInfo">{{messageContent}}</div>
+		<div class="alert alert-danger"
+			data-ng-show="messageSeverityError">{{messageContent}}</div>
+	</div>
+	<form name="loginForm" class="form-horizontal" role="form"
+		data-ng-submit="loginForm.$valid && login.doLogin()" novalidate>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+			<div class="col-sm-6">
+				<input type="email" class="form-control" placeholder="Email Address"
+					name="userName" autofocus="autofocus" data-ng-model="login.user.userName"
+					required data-ng-pattern="/^\w+@\w+\.\w{2,3}$/"> <span
+					data-ng-show="loginForm.email.$error.pattern"> Invalid Email
+					Address!</span></input>
+			</div>
+			<!-- <div class="col-sm-6">
+				<input type="text" class="form-control" placeholder="Email Address"
+					name="userName" autofocus="autofocus" data-ng-model="login.user.userName"
+					required > <span
+					data-ng-show="loginForm.email.$error.pattern"> Invalid Email
+					Address!</span></input>
+			</div> -->
+		</div>
+		<div class="form-group">
+			<label for="inputPassword3" class="col-sm-2 control-label">Password
+			</label>
+			<div class="col-sm-6">
+				<input type="password" class="form-control" placeholder="Password"
+					name="password" data-ng-model="login.user.password" required
+					data-ng-minlength="2" data-ng-maxlength="10" maxlength="10"><span
+					data-ng-show="loginForm.pass.$error.minlength || loginForm.pass.$error.maxlength">
+					The input characters must be in range 6 to 10!</span></input>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-2">
+				<button type="submit" class="btn btn-default">Sign in</button>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2">
+				<label class="col-sm-2" style="width: 60%;"><span id="fpass">Forgot
+						your password?</span></label>
+			</div>
+		</div>
+	</form>
+
+</div>
